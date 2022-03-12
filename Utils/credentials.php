@@ -1,5 +1,5 @@
 <?php
-$dsn = "mysql:dbname=moteur-recherche;host=localhost";
-$login = "11813410";
-$mdp = "060893655DF";
+$dsn = "mysql:dbname=televersement-hamsek;host=localhost";
+$login = "televersement-hamsek";
+$mdp = "WP625MEU3koyiUzY";
 ?>

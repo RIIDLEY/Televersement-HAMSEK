@@ -44,4 +44,25 @@ class Model
         }
         return self::$instance;
     }
+
+    public function addNewFile($infos)
+    {
+
+        try {
+            //Préparation de la requête
+            $requete = $this->bd->prepare('INSERT INTO nobels (year, category, name, birthdate, birthplace, county, motivation) VALUES (:year, :category, :name, :birthdate, :birthplace, :county, :motivation)');
+
+            //Remplacement des marqueurs de place par les valeurs
+            $marqueurs = ['year', 'category', 'name', 'birthdate','birthplace', 'county', 'motivation'];
+            foreach ($marqueurs as $value) {
+                $requete->bindValue(':' . $value, $infos[$value]);
+            }
+
+            //Exécution de la requête
+            return $requete->execute();
+        } catch (PDOException $e) {
+            die('Echec addNobelPrize, erreur n°' . $e->getCode() . ':' . $e->getMessage());
+        }
+    }
+
 }
