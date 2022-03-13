@@ -45,18 +45,15 @@ class Model
         return self::$instance;
     }
 
-    public function addNewFile($infos)
+    public function addNewFile($nom)
     {
 
         try {
             //Préparation de la requête
-            $requete = $this->bd->prepare('INSERT INTO nobels (year, category, name, birthdate, birthplace, county, motivation) VALUES (:year, :category, :name, :birthdate, :birthplace, :county, :motivation)');
+            $requete = $this->bd->prepare('INSERT INTO fichier_upload (nom) VALUES (:nom)');
 
             //Remplacement des marqueurs de place par les valeurs
-            $marqueurs = ['year', 'category', 'name', 'birthdate','birthplace', 'county', 'motivation'];
-            foreach ($marqueurs as $value) {
-                $requete->bindValue(':' . $value, $infos[$value]);
-            }
+            $requete->bindValue(':nom', $nom);
 
             //Exécution de la requête
             return $requete->execute();

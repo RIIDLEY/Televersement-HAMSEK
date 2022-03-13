@@ -22,10 +22,12 @@ class Controller_home extends Controller{
 
       }else{
         $m = Model::getModel();
-        var_dump($_FILES['fichier']);
-        $nom = $_FILES['fichier']['tmp_name'];
-        $nomdestination = 'Upload/'.$_FILES['fichier']['name'];
-        move_uploaded_file($nom, $nomdestination);
+        
+        $tmp_nom = $_FILES['fichier']['tmp_name'];
+
+        $m->addNewFile($_FILES['fichier']['name']);
+        move_uploaded_file($tmp_nom, 'Upload/'.$_FILES['fichier']['name']);
+
         $this->action_home();
       }
 
