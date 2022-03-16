@@ -45,7 +45,7 @@ class Model
         return self::$instance;
     }
 
-    public function addNewFile($nom)
+    public function addNewFile($nom)//ajoute un fichier à la base de données
     {
 
         try {
@@ -58,7 +58,7 @@ class Model
             //Exécution de la requête
             return $requete->execute();
         } catch (PDOException $e) {
-            die('Echec addNobelPrize, erreur n°' . $e->getCode() . ':' . $e->getMessage());
+            die('Echec addNewFile, erreur n°' . $e->getCode() . ':' . $e->getMessage());
         }
     }
 
